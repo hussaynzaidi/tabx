@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>tabX</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <img src="images/icon48.png" alt="tabX" class="logo">
+      <h1 >tabX</h1>
+      <div class="actions">
+        <button id="createGroup" class="btn first"><i class="fas fa-plus"></i> New Group</button>
+      </div>
+    </header>
+
+    <div class="pinned-groups-section">
+      <h2>Pinned Groups</h2>
+      <div id="pinnedGroups" class="groups-container"></div>
+    </div>
+
+    <div class="groups-section">
+      <h2>All Groups</h2>
+      <div id="allGroups" class="groups-container"></div>
+    </div>
+
+
+    <div id="toast" class="toast hidden">
+      <span id="toastMessage"></span>
+    </div>
+  </div>
+
+  <!-- Modal for creating/editing groups -->
+  <div id="groupModal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 id="modalTitle">Create New Group</h2>
+      <form id="groupForm">
+        <div class="form-group">
+          <label for="groupName">Group Name:</label>
+          <input type="text" id="groupName" required>
+        </div>
+        <div class="form-group">
+          <label for="groupColor">Group Color:</label>
+          <input type="color" id="groupColor" value="#4285F4">
+        </div>
+        <div class="form-group">
+          <label>
+            <input type="checkbox" id="isPinned">
+            Pin this group
+          </label>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn primary">Save</button>
+          <button type="button" class="btn secondary" id="cancelBtn">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal for adding a new tab to a group -->
+  <div id="addTabModal" class="modal hidden">
+    <div class="modal-content">
+      <h2>Add New Tab</h2>
+      <div class="add-tab-container">
+        <div class="add-tab-input">
+          <input type="url" id="tabUrl" placeholder="Paste a URL: https://example.com">
+          <button type="button" class="btn primary" id="addUrlTab">Add Tab</button>
+        </div>
+      </div>
+      <div class="add-tab-actions">
+        <button id="addCurrentTabModal" class="btn primary">Add Current Tab</button>
+        <button type="button" class="btn secondary" id="cancelAddTab">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+
+</html>
