@@ -601,10 +601,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!group || group.tabs.length === 0) return;
     
     try {
-      for (const tab of group.tabs) {
-        await chrome.tabs.create({ url: tab.url });
-      }
-      showToast(`Opened all tabs from "${group.name}"`);
+      //  for (const tab of group.tabs) {
+     //   await chrome.tabs.create({ url: tab.url });
+      //}
+      //showToast(`Opened all tabs from "${group.name}"`);
+      await Promise.all(group.tabs.map(tab => chrome.tabs.create({ url: tab.url })));
+        showToast(`Opened all tabs from "${group.name}"`);
     } catch (error) {
       console.error('Error restoring tabs:', error);
       showToast('Error opening tabs');
